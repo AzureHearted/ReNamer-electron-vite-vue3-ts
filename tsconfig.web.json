@@ -1,0 +1,24 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
+  "include": [
+    "src/renderer/src/env.d.ts",
+    "src/renderer/src/**/*",
+    "src/renderer/src/**/*.vue",
+    "src/renderer/src/views/**/*.vue",
+    "src/renderer/src/**/*.ts",
+    "src/preload/*.d.ts"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true, // 是否启用增量编译
+		"declaration": true, // 是否生成声明文件
+		"declarationDir": "src/renderer/types", // ts类型文件的输出目录
+    "outDir": "src/renderer/temp", // TS的编译结果js文件的输出路径
+    "paths": {
+      "@renderer/*": [
+        "src/renderer/src/*"
+      ]
+    },
+    "types": ["naive-ui/volar"]
+  }
+}

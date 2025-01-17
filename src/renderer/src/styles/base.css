@@ -1,0 +1,94 @@
+/* 调色板来自 <https://github.com/vuejs/theme> */
+/* 调色板 - 颜色变量定义 */
+:root {
+	--vt-c-white: #ffffff; /* 纯白 */
+	--vt-c-white-soft: #f8f8f8; /* 柔和白 */
+	--vt-c-white-mute: #f2f2f2; /* 浅灰白 */
+
+	--vt-c-black: #181818; /* 纯黑 */
+	--vt-c-black-soft: #222222; /* 柔和黑 */
+	--vt-c-black-mute: #282828; /* 浅灰黑 */
+
+	--vt-c-indigo: #2c3e50; /* 靛蓝色 */
+
+	--vt-c-divider-light-1: rgba(60, 60, 60, 0.29); /* 浅色分隔线（较深） */
+	--vt-c-divider-light-2: rgba(60, 60, 60, 0.12); /* 浅色分隔线（较浅） */
+	--vt-c-divider-dark-1: rgba(84, 84, 84, 0.65); /* 深色分隔线（较深） */
+	--vt-c-divider-dark-2: rgba(84, 84, 84, 0.48); /* 深色分隔线（较浅） */
+
+	--vt-c-text-light-1: var(--vt-c-indigo); /* 浅色主题主文本颜色 */
+	--vt-c-text-light-2: rgba(60, 60, 60, 0.66); /* 浅色主题次文本颜色 */
+	--vt-c-text-dark-1: var(--vt-c-white); /* 深色主题主文本颜色 */
+	--vt-c-text-dark-2: rgba(235, 235, 235, 0.64); /* 深色主题次文本颜色 */
+}
+
+/* 语义化颜色变量定义（适用于项目中） */
+:root {
+	--color-background: var(--vt-c-white); /* 背景颜色 */
+	--color-background-soft: var(--vt-c-white-soft); /* 柔和背景颜色 */
+	--color-background-mute: var(--vt-c-white-mute); /* 浅灰背景颜色 */
+
+	--color-border: var(--vt-c-divider-light-2); /* 边框颜色 */
+	--color-border-hover: var(--vt-c-divider-light-1); /* 悬浮时边框颜色 */
+
+	--color-heading: var(--vt-c-text-light-1); /* 标题颜色 */
+	--color-text: var(--vt-c-text-light-1); /* 正文颜色 */
+
+	--section-gap: 160px; /* 区域间距 */
+}
+
+/* 默认主题 */
+html[data-vxe-ui-theme="light"] {
+	--vxe-ui-font-color: #606266;
+	--vxe-ui-font-primary-color: #409eff;
+}
+
+/* 深色主题颜色变量 */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: var(--vt-c-black); /* 背景颜色 */
+		--color-background-soft: var(--vt-c-black-soft); /* 柔和背景颜色 */
+		--color-background-mute: var(--vt-c-black-mute); /* 浅灰背景颜色 */
+
+		--color-border: var(--vt-c-divider-dark-2); /* 边框颜色 */
+		--color-border-hover: var(--vt-c-divider-dark-1); /* 悬浮时边框颜色 */
+
+		--color-heading: var(--vt-c-text-dark-1); /* 标题颜色 */
+		--color-text: var(--vt-c-text-dark-2); /* 正文颜色 */
+	}
+
+	/* 暗黑主题 */
+	html[data-vxe-ui-theme="dark"] {
+		--vxe-ui-font-color: #a0a3a7;
+		--vxe-ui-font-primary-color: #409eff;
+	}
+}
+
+/* 全局样式 - 元素的基本样式 */
+*,
+*::before,
+*::after {
+	/* 盒模型设置为边框盒 */
+	box-sizing: border-box;
+	/* 清除默认外边距 */
+	margin: 0;
+	/* 字体粗细为正常 */
+	font-weight: normal;
+}
+
+/* body 的样式设置 */
+body {
+	min-height: 100vh; /* 最小高度设置为视口高度 */
+	color: var(--color-text); /* 设置文本颜色 */
+	background: var(--color-background); /* 设置背景颜色 */
+	transition: color 0.5s, /* 文本颜色的平滑过渡 */ background-color 0.5s; /* 背景颜色的平滑过渡 */
+	line-height: 1.6; /* 设置行高 */
+	font-family: Inter, /* 首选字体 */ -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif; /* 备用字体 */
+	/* 字体大小 */
+	font-size: 15px;
+	text-rendering: optimizeLegibility; /* 优化文本渲染 */
+	-webkit-font-smoothing: antialiased; /* 优化字体平滑（WebKit） */
+	-moz-osx-font-smoothing: grayscale; /* 优化字体平滑（Mac OS X） */
+}
