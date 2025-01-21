@@ -16,5 +16,10 @@
 	},
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
-	}
+  },
+  "cSpell.words": [
+    "IAPI",
+    "Subolumn",
+    "unmaximize"
+  ]
 }
