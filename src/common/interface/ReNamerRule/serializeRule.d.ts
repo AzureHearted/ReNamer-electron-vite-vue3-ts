@@ -4,7 +4,7 @@ import type { ReNameRuleBase } from './base'
 export interface ReNameSerializeRuleAll extends ReNameRuleBase {
   type: 'serialize'
   /** 要插入序列的位置 */
-  position: 'prefix' | 'suffix' | 'index' | 'after_the_text' | 'before_the_text' | 'replace'
+  position: 'prefix' | 'suffix' | 'index' | 'after' | 'before' | 'replace'
   /** 锚点位置索引 (仅 position = "index" 时生效) */
   anchorIndex: number
   /** 锚点文本 (仅 position = "after_the_text" | "before_the_text" 时生效) */

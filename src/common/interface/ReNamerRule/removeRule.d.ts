@@ -1,8 +1,8 @@
 import type { ReNameRuleBase } from './base'
 
 /** "删除"规则 (全参数) */
-export interface ReNameDeleteRuleAll extends ReNameRuleBase {
-  type: 'delete'
+export interface ReNameRemoveRuleAll extends ReNameRuleBase {
+  type: 'remove'
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -28,13 +28,13 @@ export interface ReNameDeleteRuleAll extends ReNameRuleBase {
 }
 
 /** 删除规则：基础规则 */
-interface ReNameDeleteRuleBase extends ReNameRuleBase {
+interface ReNameRemoveRuleBase extends ReNameRuleBase {
   /** 规则类型 */
-  type: 'delete'
+  type: 'remove'
 }
 
 /** 删除规则：基于整体 */
-interface ReNameDeleteRuleByOverall extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByOverall extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -46,7 +46,7 @@ interface ReNameDeleteRuleByOverall extends ReNameDeleteRuleBase {
 }
 
 /** 删除规则：基于锚点前后 */
-interface ReNameDeleteRuleByAnchor extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByAnchor extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -60,7 +60,7 @@ interface ReNameDeleteRuleByAnchor extends ReNameDeleteRuleBase {
 }
 
 /** 删除规则：基于方向 (全部参数)  */
-interface ReNameDeleteRuleByDirectionAll extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByDirectionAll extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -84,7 +84,7 @@ interface ReNameDeleteRuleByDirectionAll extends ReNameDeleteRuleBase {
 }
 
 /** 删除规则：基于方向 ==> startMethod = "index-based" 且  endMethod = "count-based" */
-interface ReNameDeleteRuleByDirection_StartIndexBasedAndEndCountBased extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByDirection_StartIndexBasedAndEndCountBased extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -100,8 +100,8 @@ interface ReNameDeleteRuleByDirection_StartIndexBasedAndEndCountBased extends Re
 }
 
 /** 删除规则：基于方向 ==> startMethod = "index-based" 且  endMethod = "symbol-based" */
-interface ReNameDeleteRuleByDirection_StartIndexBasedAndEndSymbolBased
-  extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByDirection_StartIndexBasedAndEndSymbolBased
+  extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -121,8 +121,8 @@ interface ReNameDeleteRuleByDirection_StartIndexBasedAndEndSymbolBased
 }
 
 /** 删除规则：基于方向 ==> startMethod = "symbol-based" 且  endMethod = "count-based" */
-interface ReNameDeleteRuleByDirection_StartSymbolBasedAndEndIndexBased
-  extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByDirection_StartSymbolBasedAndEndIndexBased
+  extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -142,8 +142,8 @@ interface ReNameDeleteRuleByDirection_StartSymbolBasedAndEndIndexBased
 }
 
 /** 删除规则：基于方向 ==> startMethod = "symbol-based" 且  endMethod = "symbol-based" */
-interface ReNameDeleteRuleByDirection_StartSymbolBasedAndEndSymbolBased
-  extends ReNameDeleteRuleBase {
+interface ReNameRemoveRuleByDirection_StartSymbolBasedAndEndSymbolBased
+  extends ReNameRemoveRuleBase {
   /** 要删除的内容 */
   match: string
   /** 要删除的范围 */
@@ -163,14 +163,14 @@ interface ReNameDeleteRuleByDirection_StartSymbolBasedAndEndSymbolBased
 }
 
 /** 删除规则：基于方向  */
-type ReNameDeleteRuleByDirection =
-  | ReNameDeleteRuleByDirection_StartIndexBasedAndEndCountBased
-  | ReNameDeleteRuleByDirection_StartIndexBasedAndEndSymbolBased
-  | ReNameDeleteRuleByDirection_StartSymbolBasedAndEndIndexBased
-  | ReNameDeleteRuleByDirection_StartSymbolBasedAndEndSymbolBased
+type ReNameRemoveRuleByDirection =
+  | ReNameRemoveRuleByDirection_StartIndexBasedAndEndCountBased
+  | ReNameRemoveRuleByDirection_StartIndexBasedAndEndSymbolBased
+  | ReNameRemoveRuleByDirection_StartSymbolBasedAndEndIndexBased
+  | ReNameRemoveRuleByDirection_StartSymbolBasedAndEndSymbolBased
 
 /** 删除规则类型  */
-export type TReNameDeleteRule =
-  | ReNameDeleteRuleByOverall
-  | ReNameDeleteRuleByAnchor
-  | ReNameDeleteRuleByDirection
+export type TReNameRemoveRule =
+  | ReNameRemoveRuleByOverall
+  | ReNameRemoveRuleByAnchor
+  | ReNameRemoveRuleByDirection

@@ -3,7 +3,7 @@ import type { ReNameSerializeRuleAll } from '../../interface/ReNamerRule/seriali
 /** 序列化规则 */
 export class ReNameSerializeRule implements ReNameSerializeRuleAll {
   type: 'serialize' = 'serialize'
-  position: 'prefix' | 'suffix' | 'index' | 'after_the_text' | 'before_the_text' | 'replace'
+  position: 'prefix' | 'suffix' | 'index' | 'after' | 'before' | 'replace'
   anchorIndex: number
   anchorText: string
   sequenceStart: number
@@ -23,8 +23,8 @@ export class ReNameSerializeRule implements ReNameSerializeRuleAll {
       sequenceStep: 1,
       paddingCount: 3,
       resetFolderChanges: true,
-      ignoreCase: true,
-      isExactMatch: true,
+      ignoreCase: false,
+      isExactMatch: false,
       ignoreExt: true
     }
   ) {

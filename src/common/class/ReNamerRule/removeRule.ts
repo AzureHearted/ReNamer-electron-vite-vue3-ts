@@ -1,13 +1,13 @@
 import type {
-  ReNameDeleteRuleAll as IReNameDeleteRuleAll,
-  TReNameDeleteRule
-} from '../../interface/ReNamerRule/deleteRule'
+  ReNameRemoveRuleAll,
+  TReNameRemoveRule
+} from '../../interface/ReNamerRule/removeRule'
 
 /**
  * 删除规则
  */
-export class ReNameDeleteRule implements IReNameDeleteRuleAll {
-  type: 'delete' = 'delete'
+export class ReNameRemoveRule implements ReNameRemoveRuleAll {
+  type: 'remove' = 'remove'
   match: string
   range: 'all' | 'first' | 'last' | 'before' | 'after' | 'ltr' | 'rtl'
   startMethod: 'index-based' | 'symbol-based'
@@ -22,7 +22,7 @@ export class ReNameDeleteRule implements IReNameDeleteRuleAll {
   ignoreExt: boolean
 
   constructor(
-    options: Omit<IReNameDeleteRuleAll, 'type'> = {
+    options: Omit<ReNameRemoveRuleAll, 'type'> = {
       match: '',
       range: 'all',
       startMethod: 'index-based',

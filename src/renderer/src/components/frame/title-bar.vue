@@ -147,7 +147,8 @@ button {
     -webkit-app-region: no-drag;
     display: flex;
     align-items: center;
-    transition: 0.25s;
+    transition: background-color 0.25s;
+    // transition: 0.25s;
   }
 }
 
@@ -157,7 +158,7 @@ button {
     fill: #000000;
     &:hover {
       background-color: #dadada;
-      fill: #ffffff;
+      // fill: #757575;
     }
     &.close:hover {
       background-color: #e81123;

@@ -6,8 +6,8 @@ export class ReNameRegexRule implements TReNameRegexRule {
   regex: string
   replaceTo: string
   ignoreCase: boolean
-  isExactMatch: boolean
   ignoreExt: boolean
+  isExactMatch: boolean
   constructor(
     options: Omit<TReNameRegexRule, 'type'> = {
       regex: '',

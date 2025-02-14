@@ -47,6 +47,7 @@ function changeTheme(isDarkMode: boolean) {
 <style scoped lang="scss">
 @use 'src/renderer/src/styles/base.scss' as vars;
 
+//s 框架
 .frame {
   position: fixed;
   display: flex;
@@ -61,6 +62,10 @@ function changeTheme(isDarkMode: boolean) {
     overflow: hidden;
   }
 }
+</style>
+
+<style lang="scss">
+@use 'src/renderer/src/styles/base.scss' as vars;
 
 //s 框架的自定义滚动条样式
 .frame-scrollbar {

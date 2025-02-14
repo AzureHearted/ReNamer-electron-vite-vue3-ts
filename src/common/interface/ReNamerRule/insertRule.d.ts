@@ -7,13 +7,15 @@ export interface ReNameInsertRuleAll extends ReNameRuleBase {
   /** 要插入的内容 */
   text: string
   /** 要插入的位置 */
-  position: 'prefix' | 'suffix' | 'index' | 'after_the_text' | 'before_the_text' | 'replace'
+  position: 'prefix' | 'suffix' | 'index' | 'after' | 'before' | 'replace'
   /** 锚点位置索引 (仅 position = "index" 时生效) */
   anchorIndex: number
   /** 锚点文本 (仅 position = "after_the_text" | "before_the_text" 时生效) */
   anchorText: string
   /** 忽略大小写 (当 anchorText 生效时, 对 anchorText 也生效) */
   ignoreCase: boolean
+  /** 全字匹配 (当 anchorText 生效时, 对 anchorText 也生效) */
+  isExactMatch: boolean
 }
 
 /** 插入规则：基础规则 */

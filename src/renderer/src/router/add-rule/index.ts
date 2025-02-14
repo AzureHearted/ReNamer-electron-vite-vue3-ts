@@ -1,14 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-// import AddRuleWindow from '@renderer/windows/add-rule/layout.vue'
-// import AddRuleInsert from '@renderer/windows/add-rule/form/insert.vue'
-// import AddRuleReplace from '@renderer/windows/add-rule/form/replace.vue'
-// import AddRuleDelete from '@renderer/windows/add-rule/form/delete.vue'
-// import AddRuleSerialize from '@renderer/windows/add-rule/form/serialize.vue'
-// import AddRuleFill from '@renderer/windows/add-rule/form/fill.vue'
-// import AddRuleRegex from '@renderer/windows/add-rule/form/regex.vue'
-// import AddRuleExtension from '@renderer/windows/add-rule/form/extension.vue'
-
 export default {
   path: '/add-rule',
   name: 'add-rule',
@@ -28,9 +19,9 @@ export default {
       component: () => import('@renderer/windows/add-rule/form/replace.vue')
     },
     {
-      path: 'delete',
-      name: 'add-rule-delete',
-      component: () => import('@renderer/windows/add-rule/form/delete.vue')
+      path: 'remove',
+      name: 'add-rule-remove',
+      component: () => import('@renderer/windows/add-rule/form/remove.vue')
     },
     {
       path: 'serialize',

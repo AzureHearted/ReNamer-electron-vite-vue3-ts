@@ -1,18 +1,27 @@
 import { ReNameInsertRule } from './insertRule'
 import { ReNameReplaceRule } from './replaceRule'
-import { ReNameDeleteRule } from './deleteRule'
+import { ReNameRemoveRule } from './removeRule'
 import { ReNameSerializeRule } from './serializeRule'
 import { ReNameFillRule } from './fillRule'
 import { ReNameRegexRule } from './regexRule'
-import type { TReNameRule } from '../../interface/ReNamerRule'
+import { ReNameExtensionRule } from './extensionRule'
 
 export {
   ReNameInsertRule,
   ReNameReplaceRule,
-  ReNameDeleteRule,
+  ReNameRemoveRule,
   ReNameSerializeRule,
   ReNameFillRule,
-  ReNameRegexRule
+  ReNameRegexRule,
+  ReNameExtensionRule
 }
 
-export { TReNameRule }
+/** 重命名规则 */
+export type TReNameRule =
+  | ReNameInsertRule
+  | ReNameReplaceRule
+  | ReNameRemoveRule
+  | ReNameSerializeRule
+  | ReNameFillRule
+  | ReNameRegexRule
+  | ReNameExtensionRule
