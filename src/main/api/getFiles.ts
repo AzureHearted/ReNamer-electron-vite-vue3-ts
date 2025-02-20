@@ -1,19 +1,33 @@
-import { FileListTableData } from '@common/interface/TableFileListData'
-import fs from 'fs'
-import path from 'path'
+import { ReNamePath } from '@common/class/ReNamePath'
+import { getPathInfo } from '@common/utils/pathUtils'
+const fs = require('fs') as typeof import('fs')
+// import fs from 'fs'
+const path = require('path') as typeof import('path')
+// import path from 'path'
+import { log } from '@main/utils/log'
 
-interface IOptions {
+interface Options {
+  /** 深度递归 */
   recursive?: boolean
+  /** 匹配文件 */
   matchFiles?: boolean
+  /** 匹配文件夹 */
   matchFolders?: boolean
 }
 
+/**
+ * 获取文件信息
+ * @param files 文件路径列表
+ * @param options 选项
+ * @returns
+ */
 export async function getFiles(
   files: string[], // 传入的文件路径列表
-  options?: IOptions
-): Promise<FileListTableData[]> {
-  console.log(`获取文件信息`, files)
-  const fileDetails: FileListTableData[] = []
+  options?: Options
+): Promise<ReNamePath[]> {
+  log.info(`获取文件信息`, files)
+
+  const fileDetails: ReNamePath[] = []
 
   const defaultOptions = {
     recursive: true,
@@ -25,20 +39,22 @@ export async function getFiles(
 
   async function getFile(filePath: string) {
     try {
-      const stats = await fs.promises.stat(filePath)
-      const isDirectory = stats.isDirectory()
+      const info = await getPathInfo(filePath)
+      log.info('获取文件信息', info)
+      const { name, isDirectory, size, parent } = info
 
       if (isDirectory) {
         if (finalOptions.matchFolders) {
-          fileDetails.push({
-            enabled: true,
-            state: 'ok',
-            name: path.basename(filePath),
-            newName: path.basename(filePath),
-            path: filePath,
-            size: stats.size,
-            isDirectory: isDirectory
-          })
+          fileDetails.push(
+            new ReNamePath({
+              enable: true,
+              path: filePath,
+              name,
+              size,
+              parent,
+              isDirectory
+            })
+          )
         }
         if (finalOptions.recursive) {
           const dirFiles = await fs.promises.readdir(filePath)
@@ -48,15 +64,16 @@ export async function getFiles(
         }
       } else {
         if (finalOptions.matchFiles) {
-          fileDetails.push({
-            enabled: true,
-            state: 'ok',
-            name: path.basename(filePath),
-            newName: path.basename(filePath),
-            path: filePath,
-            size: stats.size,
-            isDirectory: isDirectory
-          })
+          fileDetails.push(
+            new ReNamePath({
+              enable: true,
+              path: filePath,
+              name,
+              size,
+              parent,
+              isDirectory
+            })
+          )
         }
       }
     } catch (err) {

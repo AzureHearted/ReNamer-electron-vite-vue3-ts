@@ -1,7 +1,7 @@
 <template>
   <div class="title-bar" :is-dark="isDark">
     <div class="title">{{ title }}</div>
-    <button class="item" @click="onChangeWindow('min')">
+    <button class="item" @click="onChangeWindow('min')" tabindex="-1">
       <svg
         t="1655259273075"
         class="icon"
@@ -16,7 +16,7 @@
         ></path>
       </svg>
     </button>
-    <button v-if="isMax" class="item" @click="onChangeWindow('scale')">
+    <button v-if="isMax" class="item" @click="onChangeWindow('scale')" tabindex="-1">
       <svg
         t="1655259165159"
         class="icon"
@@ -31,7 +31,7 @@
         ></path>
       </svg>
     </button>
-    <button v-else class="item" @click="onChangeWindow('scale')">
+    <button v-else class="item" @click="onChangeWindow('scale')" tabindex="-1">
       <svg
         t="1655259143272"
         class="icon"
@@ -46,7 +46,7 @@
         ></path>
       </svg>
     </button>
-    <button class="item close" @click="onChangeWindow('close')">
+    <button class="item close" @click="onChangeWindow('close')" tabindex="-1">
       <svg
         t="1655259187200"
         class="icon"
@@ -66,6 +66,7 @@
 
 <script setup lang="ts">
 const { ipcRenderer } = window.electron
+import { log } from '@renderer/utils/log'
 import { ref, withDefaults } from 'vue'
 
 withDefaults(
@@ -100,7 +101,7 @@ const onChangeWindow = (type: string) => {
 }
 
 // 监听窗口最大化状态变化
-ipcRenderer.on('window-maximized', (event, isMaximized) => {
+ipcRenderer.on('window-maximized', (_event, isMaximized) => {
   isMax.value = isMaximized
   if (isMaximized) {
     console.log('窗口已最大化')

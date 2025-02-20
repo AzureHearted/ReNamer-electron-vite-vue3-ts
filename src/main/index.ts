@@ -1,16 +1,16 @@
 import { app, BrowserView, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer } from '@electron-toolkit/utils'
 import { createWindow as createMainWindow } from './windows/mainWindow'
-// import { getFiles } from './api/getFiles'
-import './ipcHandlers'
 
-// app.disableHardwareAcceleration()
+// 加载所有 IPC 监听器
+import '@main/listeners'
 
 // 主窗口对象
 let mainWindow: BrowserWindow
+
 // 当 Electron 完成初始化并准备创建浏览器窗口时，将调用此方法。
 // 某些 API 只能在此事件发生后才能使用。
-app.whenReady().then(async () => {
+app.whenReady().then(() => {
   // 为 Windows 设置应用用户模型 ID
   electronApp.setAppUserModelId('com.electron')
 
@@ -27,7 +27,7 @@ app.whenReady().then(async () => {
     if (BrowserWindow.getAllWindows().length === 0) mainWindow = await createMainWindow()
   })
 
-  mainWindow = await createMainWindow()
+  mainWindow = createMainWindow()
 })
 
 // 关闭所有窗口时退出应用，除了在 macOS 上。
@@ -37,4 +37,3 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
-

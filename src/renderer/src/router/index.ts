@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import RouteAddRule from './add-rule'
+import RouteAddRule from './rule'
 
 const router = createRouter({
   history: import.meta.env.DEV

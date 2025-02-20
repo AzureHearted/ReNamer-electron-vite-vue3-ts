@@ -1,7 +1,7 @@
 <template>
   <n-flex class="file-list" vertical :size="0">
     <div style="height: 100px; overflow: auto">
-      <div v-for="item in data" :key="item.path">{{ item.name }}</div>
+      <div v-for="item in pathListTableData" :key="item.rawData.path">{{ item.rawData.name }}</div>
     </div>
     <n-split
       style="flex: 1"
@@ -15,26 +15,56 @@
       disabled
     >
       <template #1>
-        <RuleListTable style="height: 100%"></RuleListTable>
+        <RuleListTable
+          @update="(d) => (ruleListTableData = d)"
+          style="height: 100%"
+        ></RuleListTable>
       </template>
       <template #2>
-        <FileListTable style="height: 100%" @update:data="(d) => (data = d)"></FileListTable>
+        <FileListTable
+          :rule-list="ruleList as TReNameRule[]"
+          @update="(d) => (pathListTableData = d)"
+          style="height: 100%"
+        ></FileListTable>
       </template>
     </n-split>
   </n-flex>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import FileListTable from './table-file-list.vue'
+import { computed, reactive, ref, watch } from 'vue'
+import FileListTable from './table-path-list.vue'
 import RuleListTable from './table-rule-list.vue'
-import type { FileListTableData } from '@common/interface/TableFileListData'
+import { PathTableData } from '@common/class/TablePathList'
+import { RuleTableData } from '@common/class/TableRuleList'
+import { TReNameRule } from '@common/class/ReNameRule'
 
-const data = ref<FileListTableData[]>([])
+const pathListTableData = ref<PathTableData[]>([])
+const ruleListTableData = ref<RuleTableData[]>([])
+
+//j 规则列表
+const ruleList = computed(() => {
+  return ruleListTableData.value.map((x) => x.rawData)
+})
+
+watch(
+  ruleListTableData,
+  (d) => {
+    // console.log('数据更新(ruleListData)', d)
+  },
+  { deep: true }
+)
+
+watch(
+  pathListTableData,
+  (d) => {
+    // console.log('数据更新(pathListData)', d)
+  },
+  { deep: true }
+)
 </script>
 
 <style lang="scss" scoped>
-
 .file-list {
   // overflow: hidden;
   height: 100%;
